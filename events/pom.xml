@@ -11,8 +11,15 @@
 	<groupId>com.rest</groupId>
 	<artifactId>events</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>events</name>
 	<description>Event application to implement REST tasks</description>
+	<modules>
+		<module>event-service-api</module>
+		<module>event-service-dto</module>
+		<module>event-service-impl</module>
+		<module>event-service-rest</module>
+	</modules>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
