@@ -1,2 +1,2 @@
 # RestAPITasks
-This repo is to practice REST tasks
+This repo is to practice REST features
