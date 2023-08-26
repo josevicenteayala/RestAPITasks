@@ -1,6 +1,8 @@
 package org.rest.controllers;
 
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.api.services.EventService;
 import org.dto.events.Event;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/events")
+@Api(tags = "Event Service", description = "Operations related to event management")
 public class EventServiceController {
 
     private final EventService eventService;
@@ -20,6 +23,7 @@ public class EventServiceController {
     }
 
     @GetMapping
+    @ApiOperation(value = "Get all events", notes = "Returns a list of all events.")
     public List<Event> getAllEvents() {
         return eventService.getAllEvents();
     }
