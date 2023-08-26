@@ -1,4 +1,4 @@
-package org.dto;
+package org.dto.events;
 
 import java.time.LocalDateTime;
 
@@ -9,7 +9,7 @@ public class Event {
     private String speaker;
     private String eventType;
     private LocalDateTime dateTime;
-    
+
     public Long getId() {
         return id;
     }
