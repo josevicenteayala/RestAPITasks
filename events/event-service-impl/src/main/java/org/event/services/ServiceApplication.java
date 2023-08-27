@@ -1,11 +1,11 @@
-package org.dto;
+package org.event.services;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DtoApplication {
+public class ServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DtoApplication.class,args);
+        SpringApplication.run(ServiceApplication.class, args);
     }
 }

@@ -1,10 +1,11 @@
-package org.rest.controllers;
+package org.event.rest.controllers;
 
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.api.services.EventService;
-import org.dto.events.Event;
+import org.event.api.services.EventService;
+import org.event.dto.events.Event;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import java.util.List;
 @Api(tags = "Event Service", description = "Operations related to event management")
 public class EventServiceController {
 
+    @Autowired
     private final EventService eventService;
 
     public EventServiceController(EventService eventService) {

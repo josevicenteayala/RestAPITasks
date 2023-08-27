@@ -1,10 +1,11 @@
-package org.services.events;
+package org.event.services.events;
 
-import org.dto.events.Event;
+import org.event.dto.events.Event;
+import org.event.api.services.EventService;
 
 import java.util.List;
 
-public class EventService implements org.api.services.EventService {
+public class EventServiceImpl implements EventService {
     @Override
     public Event createEvent(Event event) {
         return null;

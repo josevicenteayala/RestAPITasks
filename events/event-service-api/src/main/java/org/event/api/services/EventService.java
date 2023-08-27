@@ -1,8 +1,7 @@
-package org.api.services;
-
-import org.dto.events.Event;
+package org.event.api.services;
 
 import java.util.List;
+import org.event.dto.events.Event;
 
 public interface EventService {
     Event createEvent(Event event);

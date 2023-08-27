@@ -1,4 +1,4 @@
-package org.rest.config;
+package org.event.rest.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
