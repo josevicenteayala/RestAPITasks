@@ -1,10 +1,11 @@
 package org.event.services.events;
 
+import java.util.List;
 import org.event.dto.events.Event;
 import org.event.api.services.EventService;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+@Service
 public class EventServiceImpl implements EventService {
     @Override
     public Event createEvent(Event event) {
