@@ -8,11 +8,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.time.LocalDateTime;
 import java.util.List;
+import org.event.api.repository.EventRepository;
 import org.event.api.services.EventService;
 import org.event.dto.events.Event;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -26,13 +28,17 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 @AutoConfigureMockMvc
 class EventServiceControllerTest {
 
-    @MockBean
+    @Autowired
     private EventService eventService;
+
+    @MockBean
+    private EventRepository eventRepository;
 
     protected MockMvc mockMvc;
 
     @BeforeEach
     public void setup() {
+
         MockitoAnnotations.openMocks(this);
         this.mockMvc = MockMvcBuilders.standaloneSetup(new EventServiceController(eventService)).build();
     }

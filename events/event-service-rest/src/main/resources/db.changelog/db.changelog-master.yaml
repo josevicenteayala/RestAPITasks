@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Jose Vicente
+      changes:
+        - createTable:
+            tableName: event
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                constraints:
+                  primaryKey: true
+              - column:
+                  name: title
+                  type: VARCHAR(50)
+              - column:
+                  name: place
+                  type: VARCHAR(100)
+              - column:
+                  name: speaker
+                  type: VARCHAR(100)
+              - column:
+                  name: eventType
+                  type: VARCHAR(20)
