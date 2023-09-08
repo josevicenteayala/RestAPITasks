@@ -1,6 +1,5 @@
 package org.event.rest.controllers;
 
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.event.api.services.EventService;
