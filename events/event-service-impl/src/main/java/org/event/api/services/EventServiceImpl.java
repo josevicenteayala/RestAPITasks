@@ -1,8 +1,7 @@
-package org.event.services.events;
+package org.event.api.services;
 
 import java.util.List;
 import org.event.dto.events.Event;
-import org.event.api.services.EventService;
 import org.springframework.stereotype.Service;
 
 @Service
