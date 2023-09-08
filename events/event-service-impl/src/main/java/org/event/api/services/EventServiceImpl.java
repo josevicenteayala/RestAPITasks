@@ -42,6 +42,9 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<Event> getAllEvents() {
         List<EventEntity> eventEntityList = eventRepository.findAll();
+        if(eventEntityList.isEmpty()) {
+            return List.of();
+        }
         return eventEntityList.stream().map(this ::convertToEvent).collect(Collectors.toList());
     }
 

@@ -8,6 +8,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.event.api.model.EventEntity;
 import org.event.api.repository.EventRepository;
 import org.event.api.services.EventService;
 import org.event.dto.events.Event;
@@ -28,6 +30,12 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 @AutoConfigureMockMvc
 class EventServiceControllerTest {
 
+    public static final long EVENT_ID = 123L;
+    public static final String TITLE = "Title";
+    public static final String PLACE = "Place";
+    public static final String SPEAKER = "Speaker";
+    public static final String EVENT_TYPE = "eventType";
+
     @Autowired
     private EventService eventService;
 
@@ -38,7 +46,6 @@ class EventServiceControllerTest {
 
     @BeforeEach
     public void setup() {
-
         MockitoAnnotations.openMocks(this);
         this.mockMvc = MockMvcBuilders.standaloneSetup(new EventServiceController(eventService)).build();
     }
@@ -46,8 +53,8 @@ class EventServiceControllerTest {
     @Test
     void getAllEvents() throws Exception {
 
-        List<Event> events = createEventList();
-        when(eventService.getAllEvents()).thenReturn(events);
+        List<EventEntity> events = createModelEvents();
+        when(eventRepository.findAll()).thenReturn(events);
 
         Event eventExpected = getEvent();
 
@@ -78,12 +85,20 @@ class EventServiceControllerTest {
 
     private static Event getEvent() {
         Event event = new Event();
-        event.setEventType("EventType");
-        event.setId(123L);
-        event.setPlace("Place");
-        event.setTitle("Title");
-        event.setSpeaker("Speaker");
+        event.setEventType(EVENT_TYPE);
+        event.setId(EVENT_ID);
+        event.setPlace(PLACE);
+        event.setTitle(TITLE);
+        event.setSpeaker(SPEAKER);
         event.setDateTime(LocalDateTime.now());
         return event;
+    }
+
+    private List<EventEntity> createModelEvents() {
+        return List.of(createModelEvent(), createModelEvent());
+    }
+
+    private static EventEntity createModelEvent() {
+        return new EventEntity(EVENT_ID, TITLE, PLACE, SPEAKER, EVENT_TYPE, LocalDateTime.now());
     }
 }

@@ -3,6 +3,7 @@ package services;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ import java.util.List;
 import org.event.api.model.EventEntity;
 import org.event.api.repository.EventRepository;
 import org.event.api.services.EventServiceImpl;
+import org.event.dto.events.Event;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
@@ -56,7 +58,7 @@ class EventEntityServiceImplTest {
         List<EventEntity> listEventEntities = createModelEvents();
         when(eventRepository.findAll()).thenReturn(listEventEntities);
 
-        List<org.event.dto.events.Event> allEvents = eventService.getAllEvents();
+        List<Event> allEvents = eventService.getAllEvents();
         org.event.dto.events.Event event = allEvents.get(0);
         assertAll(
                 () -> assertEquals(EVENT_ID, event.getId()),
@@ -66,6 +68,14 @@ class EventEntityServiceImplTest {
                 () -> assertEquals(EVENT_TYPE, event.getEventType()),
                 () -> assertInstanceOf(LocalDateTime.class, event.getDateTime())
         );
+    }
+
+    @Test
+    void getAllEventsWithEmptyResult() {
+        when(eventRepository.findAll()).thenReturn(List.of());
+
+        List<Event> allEvents = eventService.getAllEvents();
+        assertTrue(allEvents.isEmpty());
     }
 
     @Test
