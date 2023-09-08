@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/events")
-@Api(tags = "Event Service", description = "Operations related to event management")
+@Api(tags = "EventEntity Service", description = "Operations related to event management")
 public class EventServiceController {
 
     @Autowired

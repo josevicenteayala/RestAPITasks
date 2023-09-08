@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "events")
-public class Event {
+public class EventEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class Event {
     @Column
     private LocalDateTime dateTime;
 
-    public Event(Long id, String title, String place, String speaker, String eventType, LocalDateTime dateTime) {
+    public EventEntity(Long id, String title, String place, String speaker, String eventType, LocalDateTime dateTime) {
         this.id = id;
         this.title = title;
         this.place = place;

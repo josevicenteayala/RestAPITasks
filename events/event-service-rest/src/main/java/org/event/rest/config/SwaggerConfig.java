@@ -24,7 +24,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Event Service API")
+                .title("EventEntity Service API")
                 .description("REST API for managing events")
                 .version("1.0")
                 .build();

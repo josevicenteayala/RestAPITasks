@@ -2,6 +2,7 @@ package org.event.api.services;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import org.event.api.model.EventEntity;
 import org.event.api.repository.EventRepository;
 import org.event.dto.events.Event;
 import org.modelmapper.ModelMapper;
@@ -40,8 +41,8 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> getAllEvents() {
-        List<org.event.api.model.Event> eventList = eventRepository.findAll();
-        return eventList.stream().map(this ::convertToEvent).collect(Collectors.toList());
+        List<EventEntity> eventEntityList = eventRepository.findAll();
+        return eventEntityList.stream().map(this ::convertToEvent).collect(Collectors.toList());
     }
 
     @Override
@@ -49,7 +50,7 @@ public class EventServiceImpl implements EventService {
         return null;
     }
 
-    public Event convertToEvent(org.event.api.model.Event event) {
-        return modelMapper.map(event, Event.class);
+    public Event convertToEvent(EventEntity eventEntity) {
+        return modelMapper.map(eventEntity, Event.class);
     }
 }

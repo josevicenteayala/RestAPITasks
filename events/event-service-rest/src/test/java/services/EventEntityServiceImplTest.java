@@ -7,7 +7,7 @@ import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import org.event.api.model.Event;
+import org.event.api.model.EventEntity;
 import org.event.api.repository.EventRepository;
 import org.event.api.services.EventServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 @SpringBootTest(classes = {org.event.rest.RestApplication.class})
-class EventServiceImplTest {
+class EventEntityServiceImplTest {
 
     public static final long EVENT_ID = 123L;
     public static final String TITLE = "Title";
@@ -53,8 +53,8 @@ class EventServiceImplTest {
 
     @Test
     void getAllEvents() {
-        List<Event> listEvents = createModelEvents();
-        when(eventRepository.findAll()).thenReturn(listEvents);
+        List<EventEntity> listEventEntities = createModelEvents();
+        when(eventRepository.findAll()).thenReturn(listEventEntities);
 
         List<org.event.dto.events.Event> allEvents = eventService.getAllEvents();
         org.event.dto.events.Event event = allEvents.get(0);
@@ -85,11 +85,11 @@ class EventServiceImplTest {
         );
     }
 
-    private List<Event> createModelEvents() {
+    private List<EventEntity> createModelEvents() {
         return List.of(createModelEvent());
     }
 
-    private static Event createModelEvent() {
-        return new Event(EVENT_ID, TITLE, PLACE, SPEAKER, EVENT_TYPE, LocalDateTime.now());
+    private static EventEntity createModelEvent() {
+        return new EventEntity(EVENT_ID, TITLE, PLACE, SPEAKER, EVENT_TYPE, LocalDateTime.now());
     }
 }

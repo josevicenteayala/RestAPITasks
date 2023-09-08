@@ -4,13 +4,13 @@ This project is a Java-based Spring Boot application that provides an Event Serv
 
 ## Modules
 
-1. **event-service-api**: Contains the EventService interface with methods for creating, updating, deleting, and retrieving events.
+1. **eventEntity-service-api**: Contains the EventService interface with methods for creating, updating, deleting, and retrieving events.
 
-2. **event-service-dto**: Contains the Event class with fields such as id, title, place, speaker, eventType, and dateTime.
+2. **eventEntity-service-dto**: Contains the Event class with fields such as id, title, place, speaker, eventType, and dateTime.
 
-3. **event-service-impl**: Implements the EventService interface with in-memory storage for managing events.
+3. **eventEntity-service-impl**: Implements the EventService interface with in-memory storage for managing events.
 
-4. **event-service-rest**: Provides a RESTful API interface using Spring MVC for the EventService. It includes a Swagger UI for documentation.
+4. **eventEntity-service-rest**: Provides a RESTful API interface using Spring MVC for the EventService. It includes a Swagger UI for documentation.
 
 ## Prerequisites
 
@@ -36,7 +36,7 @@ In the root of the project run the following command
     mvn clean install
 ## Run the spring boot application
 
-    cd event-service-rest
+    cd eventEntity-service-rest
     mvn spring-boot:run
 The application will start and be accessible at http://localhost:8084/api/events.
 
@@ -44,10 +44,10 @@ The application will start and be accessible at http://localhost:8084/api/events
 The project is organized as follows:
 
 events: Root project.
-event-service-api: Defines the EventService interface.
-event-service-dto: Contains the Event data transfer object.
-event-service-impl: Implements the EventService interface with in-memory storage.
-event-service-rest: Main module containing the Spring Boot application class. Ir provides RESTful API endpoints and Swagger documentation.
+eventEntity-service-api: Defines the EventService interface.
+eventEntity-service-dto: Contains the Event data transfer object.
+eventEntity-service-impl: Implements the EventService interface with in-memory storage.
+eventEntity-service-rest: Main module containing the Spring Boot application class. Ir provides RESTful API endpoints and Swagger documentation.
 
 # Contributors
 
