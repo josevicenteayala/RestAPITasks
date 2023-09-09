@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.event.api.model.EventEntity;
-import org.event.api.repository.EventRepository;
+import org.event.api.repository.EventRepositoryMemory;
 import org.event.api.services.EventService;
 import org.event.dto.events.Event;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,7 +40,7 @@ class EventServiceControllerTest {
     private EventService eventService;
 
     @MockBean
-    private EventRepository eventRepository;
+    private EventRepositoryMemory eventRepository;
 
     protected MockMvc mockMvc;
 

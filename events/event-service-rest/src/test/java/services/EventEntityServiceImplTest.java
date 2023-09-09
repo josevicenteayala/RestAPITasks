@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.event.api.model.EventEntity;
-import org.event.api.repository.EventRepository;
+import org.event.api.repository.EventRepositoryMemory;
 import org.event.api.services.EventServiceImpl;
 import org.event.dto.events.Event;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,7 +27,7 @@ class EventEntityServiceImplTest {
     public static final String SPEAKER = "Speaker";
     public static final String EVENT_TYPE = "eventType";
     @MockBean
-    private EventRepository eventRepository;
+    private EventRepositoryMemory eventRepository;
 
     private EventServiceImpl eventService;
 

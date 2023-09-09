@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.event.api.model.EventEntity;
-import org.event.api.repository.EventRepository;
+import org.event.api.repository.EventRepositoryMemory;
 import org.event.dto.events.Event;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -14,9 +14,9 @@ import org.springframework.stereotype.Service;
 public class EventServiceImpl implements EventService {
 
     private final ModelMapper modelMapper;
-    private final EventRepository eventRepository;
+    private final EventRepositoryMemory eventRepository;
 
-    public EventServiceImpl(ModelMapper modelMapper, EventRepository eventRepository) {
+    public EventServiceImpl(ModelMapper modelMapper, EventRepositoryMemory eventRepository) {
         this.modelMapper = modelMapper;
         this.eventRepository = eventRepository;
     }
