@@ -1,6 +1,8 @@
 package org.event.api.services;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.event.api.model.EventEntity;
 import org.event.api.repository.EventRepository;
@@ -21,22 +23,26 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Event createEvent(Event event) {
-        return null;
+        return convertToEvent(eventRepository.save(convertToEventEntity(event)));
     }
 
     @Override
     public Event updateEvent(Long id, Event event) {
-        return null;
+        return convertToEvent(eventRepository.save(convertToEventEntity(event)));
     }
 
     @Override
     public Event getEvent(Long id) {
-        return null;
+        Optional<EventEntity> optionalEventEntity = eventRepository.findById(id);
+        if(optionalEventEntity.isPresent()){
+            return convertToEvent(optionalEventEntity.get());
+        }
+        throw new RuntimeException(String.format("Id %s Not Found", id));
     }
 
     @Override
     public void deleteEvent(Long id) {
-
+        eventRepository.deleteById(id);
     }
 
     @Override
@@ -50,10 +56,15 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> getAllEventsByTitle(String title) {
-        return null;
+        Collection<EventEntity> eventsByTitle = eventRepository.findEventsByTitle(title);
+        return eventsByTitle.stream().map(this::convertToEvent).collect(Collectors.toList());
     }
 
     public Event convertToEvent(EventEntity eventEntity) {
         return modelMapper.map(eventEntity, Event.class);
+    }
+
+    public EventEntity convertToEventEntity(Event event) {
+        return modelMapper.map(event, EventEntity.class);
     }
 }
