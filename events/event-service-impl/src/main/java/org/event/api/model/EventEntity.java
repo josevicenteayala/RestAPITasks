@@ -40,6 +40,8 @@ public class EventEntity {
         this.dateTime = dateTime;
     }
 
+    public EventEntity() {}
+
     public Long getId() {
         return id;
     }
