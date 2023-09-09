@@ -28,7 +28,10 @@ public class EventRepositoryMemory {
 
 
     public EventEntity save(EventEntity eventEntity) {
-        eventEntityList.add(eventEntity);
+        Optional<EventEntity> optionalEventEntity = findById(eventEntity.getId());
+        if (optionalEventEntity.isEmpty()) {
+            eventEntityList.add(eventEntity);
+        }
         return eventEntity;
     }
 

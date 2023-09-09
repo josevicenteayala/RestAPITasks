@@ -1,17 +1,19 @@
 package org.event.rest.controllers;
 
+import java.util.List;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.event.api.services.EventService;
 import org.event.dto.events.Event;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/events")
@@ -25,16 +27,40 @@ public class EventServiceController {
         this.eventService = eventService;
     }
 
+    @PostMapping
+    @ApiOperation(value = "Create an event")
+    public Event createEvent(@RequestBody Event event) {
+        return eventService.createEvent(event);
+    }
+
+    @PutMapping
+    @ApiOperation(value = "Update an event")
+    public Event updateEvent(@RequestBody Event event) {
+        return eventService.createEvent(event);
+    }
+
+    @GetMapping("/{id}")
+    @ApiOperation(value = "Get event", notes = "Returns the event by id.")
+    public Event getEvent(@RequestParam Long id) {
+        return eventService.getEvent(id);
+    }
+
+    @DeleteMapping("/{id}")
+    @ApiOperation(value = "Delete an event", notes = "Delete an event from the list.")
+    public void deleteEvent(@RequestParam Long id) {
+        eventService.deleteEvent(id);
+    }
+
     @GetMapping
     @ApiOperation(value = "Get all events", notes = "Returns a list of all events.")
     public List<Event> getAllEvents() {
         return eventService.getAllEvents();
     }
 
-    @PostMapping
-    @ApiOperation(value = "Create an event")
-    public Event createEvent(@RequestBody Event event) {
-        return eventService.createEvent(event);
+    @GetMapping("/title/{title}")
+    @ApiOperation(value = "Get all events", notes = "Returns all events.")
+    public List<Event> getAllEventsByTitle(@RequestParam String title) {
+        return eventService.getAllEventsByTitle(title);
     }
 
 }
