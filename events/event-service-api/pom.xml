@@ -24,9 +24,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.event</groupId>
+            <groupId>org.event.dto</groupId>
             <artifactId>event-service-dto</artifactId>
-            <version>${project.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

@@ -23,12 +23,15 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Event createEvent(Event event) {
-        return convertToEvent(eventRepository.save(convertToEventEntity(event)));
+        System.out.println(event);
+        EventEntity eventEntity = convertToEventEntity(event);
+        return convertToEvent(eventRepository.save(eventEntity));
     }
 
     @Override
     public Event updateEvent(Long id, Event event) {
-        return convertToEvent(eventRepository.save(convertToEventEntity(event)));
+        EventEntity save = eventRepository.save(convertToEventEntity(event));
+        return convertToEvent(save);
     }
 
     @Override
@@ -61,10 +64,12 @@ public class EventServiceImpl implements EventService {
     }
 
     public Event convertToEvent(EventEntity eventEntity) {
+        System.out.println(eventEntity);
         return modelMapper.map(eventEntity, Event.class);
     }
 
     public EventEntity convertToEventEntity(Event event) {
+        System.out.println(event);
         return modelMapper.map(event, EventEntity.class);
     }
 }

@@ -19,7 +19,7 @@ public class EventRepositoryMemory {
     private static final String SPEAKER = "Speaker";
     private static final String EVENT_TYPE = "eventType";
 
-    private static List<EventEntity> eventEntityList;
+    private List<EventEntity> eventEntityList;
 
     public EventRepositoryMemory() {
         eventEntityList = new ArrayList<>();
@@ -46,10 +46,10 @@ public class EventRepositoryMemory {
     }
 
     public void deleteById(Long id) {
-        eventEntityList = eventEntityList
-                .stream()
-                .dropWhile(e -> e.getId() == id)
-                .collect(Collectors.toList());
+        Optional<EventEntity> optionalEventEntity = findById(id);
+        if(optionalEventEntity.isPresent()) {
+            eventEntityList.remove(optionalEventEntity.get());
+        }
     }
 
     public List<EventEntity> findAll() {
