@@ -8,8 +8,10 @@ import org.event.dto.events.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,18 +38,18 @@ public class EventServiceController {
     @PutMapping
     @ApiOperation(value = "Update an event")
     public Event updateEvent(@RequestBody Event event) {
-        return eventService.createEvent(event);
+        return eventService.updateEvent(event.getId(),event);
     }
 
     @GetMapping("/{id}")
     @ApiOperation(value = "Get event", notes = "Returns the event by id.")
-    public Event getEvent(@RequestParam Long id) {
+    public Event getEvent(@PathVariable Long id) {
         return eventService.getEvent(id);
     }
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "Delete an event", notes = "Delete an event from the list.")
-    public void deleteEvent(@RequestParam Long id) {
+    public void deleteEvent(@PathVariable Long id) {
         eventService.deleteEvent(id);
     }
 
@@ -59,7 +61,7 @@ public class EventServiceController {
 
     @GetMapping("/title/{title}")
     @ApiOperation(value = "Get all events", notes = "Returns all events.")
-    public List<Event> getAllEventsByTitle(@RequestParam String title) {
+    public List<Event> getAllEventsByTitle(@PathVariable String title) {
         return eventService.getAllEventsByTitle(title);
     }
 

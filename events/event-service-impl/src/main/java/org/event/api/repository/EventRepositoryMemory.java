@@ -19,7 +19,7 @@ public class EventRepositoryMemory {
     private static final String SPEAKER = "Speaker";
     private static final String EVENT_TYPE = "eventType";
 
-    private List<EventEntity> eventEntityList;
+    private static List<EventEntity> eventEntityList;
 
     public EventRepositoryMemory() {
         eventEntityList = new ArrayList<>();
@@ -30,6 +30,9 @@ public class EventRepositoryMemory {
     public EventEntity save(EventEntity eventEntity) {
         Optional<EventEntity> optionalEventEntity = findById(eventEntity.getId());
         if (optionalEventEntity.isEmpty()) {
+            eventEntityList.add(eventEntity);
+        }else {
+            deleteById(eventEntity.getId());
             eventEntityList.add(eventEntity);
         }
         return eventEntity;

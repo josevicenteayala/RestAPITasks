@@ -79,6 +79,38 @@ class EventServiceControllerTest {
 
     }
 
+    //@Test
+    void testCreateEvent() throws Exception {
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/api/events")
+                .content("""
+                        {
+                            "id":7891,
+                            "title":"Title4",
+                            "place":"Place4",
+                            "speaker":"Speaker4",
+                            "eventType":"eventType4",
+                            "dateTime":[2023,9,9,16,16,1,302461580]
+                            }
+                        """)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON);
+        mockMvc.perform(requestBuilder)
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[1].eventType").value("eventType4"))
+                .andExpect(jsonPath("$[1].id").value("7891"))
+                .andExpect(jsonPath("$[1].title").value("Title4"))
+                .andExpect(jsonPath("$[1].place").value("Place4"))
+                .andExpect(jsonPath("$[1].speaker").value("Speaker4"))
+                .andReturn();
+    }
+
+    @Test
+    void testCreateUpdateDeleteGetAll() {
+
+    }
+
     private List<Event> createEventList() {
         return List.of(getEvent(), getEvent());
     }

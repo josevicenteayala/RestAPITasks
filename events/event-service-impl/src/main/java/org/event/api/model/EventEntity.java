@@ -90,4 +90,26 @@ public class EventEntity {
         this.dateTime = dateTime;
     }
 
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("Id: ");
+        stringBuffer.append(id);
+        stringBuffer.append("\n");
+        stringBuffer.append(" Title: ");
+        stringBuffer.append(title);
+        stringBuffer.append("\n");
+        stringBuffer.append(" Place: ");
+        stringBuffer.append(place);
+        stringBuffer.append("\n");
+        stringBuffer.append(" Speaker: ");
+        stringBuffer.append(speaker);
+        stringBuffer.append("\n");
+        stringBuffer.append(" EventType: ");
+        stringBuffer.append(eventType);
+        stringBuffer.append("\n");
+        stringBuffer.append(" DateTime: ");
+        stringBuffer.append(dateTime);
+        return stringBuffer.toString();
+    }
 }
