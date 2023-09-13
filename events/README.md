@@ -49,6 +49,15 @@ eventEntity-service-dto: Contains the Event data transfer object.
 eventEntity-service-impl: Implements the EventService interface with in-memory storage.
 eventEntity-service-rest: Main module containing the Spring Boot application class. Ir provides RESTful API endpoints and Swagger documentation.
 
+# Accessing Swagger UI
+To access the Swagger documentation for the Event Service using Swagger UI. Open a web browser and go to the following URL:
+
+   http://localhost:8084/swagger-ui/index.html#/
+
+This URL will take you to the Swagger UI interface, where you can explore and test the available REST API endpoints for the Event Service.
+
+![img.png](img.png)
+
 # Contributors
 
 Jose Vicente Ayala Luna
