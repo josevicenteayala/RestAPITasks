@@ -30,7 +30,6 @@ public class EventServiceController {
     @PostMapping
     @ApiOperation(value = "Create an event")
     public Event createEvent(@RequestBody Event event) {
-        System.out.println(event);
         return eventService.createEvent(event);
     }
 
